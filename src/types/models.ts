@@ -8,24 +8,24 @@ export class Note {
 	talkingPoints?: string[];
 	action?: string;
 
-	constructor(
-		chapter: string,
-		keyInsight: string,
-		supportingConcepts?: string[],
-		quote?: string,
-		codeSnippet?: string,
-		whyItMatters?: string,
-		talkingPoints?: string[],
-		action?: string
-	) {
-		this.chapter = chapter;
-		this.keyInsight = keyInsight;
-		this.supportingConcepts = supportingConcepts;
-		this.quote = quote;
-		this.codeSnippet = codeSnippet;
-		this.whyItMatters = whyItMatters;
-		this.talkingPoints = talkingPoints;
-		this.action = action;
+	constructor(data: {
+		chapter: string;
+		keyInsight: string;
+		supportingConcepts?: string[];
+		quote?: string;
+		codeSnippet?: string;
+		whyItMatters?: string;
+		talkingPoints?: string[];
+		action?: string;
+	}) {
+		this.chapter = data.chapter;
+		this.keyInsight = data.keyInsight;
+		this.supportingConcepts = data.supportingConcepts;
+		this.quote = data.quote;
+		this.codeSnippet = data.codeSnippet;
+		this.whyItMatters = data.whyItMatters;
+		this.talkingPoints = data.talkingPoints;
+		this.action = data.action;
 	}
 
 	getSummary(): string {
@@ -44,22 +44,22 @@ export class Book {
 	notes: Note[];
 	coverImage?: string;
 
-	constructor(
-		title: string,
-		author: string,
-		genre?: string,
-		tags?: string[],
-		status: BookStatus = "Not Started",
-		notes: Note[] = [],
-		coverImage?: string
-	) {
-		this.title = title;
-		this.author = author;
-		this.genre = genre;
-		this.tags = tags;
-		this.status = status;
-		this.notes = notes;
-		this.coverImage = coverImage;
+	constructor(data: {
+		title: string;
+		author: string;
+		genre?: string;
+		tags?: string[];
+		status: BookStatus;
+		notes: Note[];
+		coverImage?: string;
+	}) {
+		this.title = data.title;
+		this.author = data.author;
+		this.genre = data.genre;
+		this.tags = data.tags;
+		this.status = data.status;
+		this.notes = data.notes;
+		this.coverImage = data.coverImage;
 	}
 
 	getChapterList(): string[] {
@@ -75,4 +75,8 @@ export class Book {
 			(note) => note.action !== undefined && note.action.trim() !== ""
 		);
 	}
+}
+
+export function addNote(data: ConstructorParameters<typeof Note>[0]): Note {
+	return new Note(data);
 }
