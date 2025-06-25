@@ -1,24 +1,15 @@
 import "./App.css";
-import theCultureCode from "./data/books/the-culture-code";
+import Home from "./pages/Home";
+import BookPage from "./pages/BookPage";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
 	return (
-		<div>
-			<h1>{theCultureCode.title}</h1>
-			<h2>{theCultureCode.author}</h2>
-			<p>{theCultureCode.status}</p>
-			<p>{theCultureCode.getTags().join(", ")}</p>
-			<p>
-				{theCultureCode.getNotesWithAction().map((note, idx) => (
-					<span key={idx}>
-						Key Insight: {note.keyInsight}
-						<br />
-						Action: {note.action}
-						<br />
-					</span>
-				))}
-			</p>
-		</div>
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/books/:slug" element={<BookPage />} />
+			<Route path="*" element={<div>404 Not Found</div>} />
+		</Routes>
 	);
 }
 

@@ -36,6 +36,7 @@ export class Note {
 export type BookStatus = "Completed" | "In Progress" | "Not Started";
 
 export class Book {
+	slug: string;
 	title: string;
 	author: string;
 	genre?: string;
@@ -45,6 +46,7 @@ export class Book {
 	coverImage?: string;
 
 	constructor(data: {
+		slug: string;
 		title: string;
 		author: string;
 		genre?: string;
@@ -53,6 +55,7 @@ export class Book {
 		notes: Note[];
 		coverImage?: string;
 	}) {
+		this.slug = data.slug;
 		this.title = data.title;
 		this.author = data.author;
 		this.genre = data.genre;

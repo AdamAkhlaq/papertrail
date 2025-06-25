@@ -1,10 +1,12 @@
 import { Book, addNote } from "../../types/models";
 
 const theCultureCode = new Book({
+	slug: "the-culture-code",
 	title: "The Culture Code",
 	author: "Daniel Coyle",
 	tags: ["Culture", "Leadership", "Teamwork"],
 	status: "In Progress",
+	coverImage: "/public/covers/the-culture-code.jpg",
 	notes: [
 		addNote({
 			chapter: "Introduction",
