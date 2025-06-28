@@ -6,7 +6,7 @@ const theCultureCode = new Book({
 	author: "Daniel Coyle",
 	tags: ["Culture", "Leadership", "Teamwork"],
 	status: "In Progress",
-	coverImage: "/public/covers/the-culture-code.jpg",
+	coverImage: "/covers/the-culture-code.jpg",
 	notes: [
 		addNote({
 			chapter: "Introduction",
