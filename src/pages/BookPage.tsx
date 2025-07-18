@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { books } from "../data/books";
+import { BookMetadata } from "../components/BookMetadata";
 
 export default function BookPage() {
 	const { slug } = useParams();
@@ -10,25 +11,7 @@ export default function BookPage() {
 
 	return (
 		<div className="flex flex-col items-center justify-center ">
-			<h1>{book.title}</h1>
-			<h2>{book.author}</h2>
-			<img src={book.coverImage} alt={`${book.title} cover`} />
-			<p>Status: {book.status}</p>
-			<br />
-			<p>
-				Notes:
-				{book.getNotesWithAction().map((note, idx) => (
-					<div key={idx} className="mb-2">
-						<span>{note.keyInsight}</span>
-						{note.action && (
-							<>
-								<br />
-								<span className="text-red-600">Action: {note.action}</span>
-							</>
-						)}
-					</div>
-				))}
-			</p>
+			<BookMetadata book={book} />
 		</div>
 	);
 }
