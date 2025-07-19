@@ -19,3 +19,12 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.hide-scrollbar {
+  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
