@@ -39,6 +39,10 @@ export class Book {
 	slug: string;
 	title: string;
 	author: string;
+	authorDetails: {
+		firstName: string;
+		lastName: string;
+	};
 	genre?: string;
 	tags?: string[];
 	status: BookStatus;
@@ -58,6 +62,14 @@ export class Book {
 		this.slug = data.slug;
 		this.title = data.title;
 		this.author = data.author;
+
+		// Split author name into first and last name
+		const nameParts = data.author.split(" ");
+		this.authorDetails = {
+			firstName: nameParts[0],
+			lastName: nameParts.slice(1).join(" "),
+		};
+
 		this.genre = data.genre;
 		this.tags = data.tags;
 		this.status = data.status;
